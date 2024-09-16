@@ -5,9 +5,11 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors(
-
-));
+app.use(cors({
+  origin: 'http://localhost:3001',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true, // If you need to handle cookies
+}));
 
 app.get("/", cors(), (req, res) => {});
 
