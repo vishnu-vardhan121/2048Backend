@@ -10,6 +10,7 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true, // If you need to handle cookies
 }));
+app.options('*', cors()); // Allow preflight for all routes
 
 app.get("/", cors(), (req, res) => {});
 
