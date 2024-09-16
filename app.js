@@ -5,7 +5,9 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors(
+
+));
 
 app.get("/", cors(), (req, res) => {});
 
@@ -45,7 +47,8 @@ app.post("/signin", async (req, res) => {
         res.json("exist")
     }else{
         
-        await collection.insertMany([data])
+        const ddd=await collection.insertMany([data])
+        console.log(ddd)
         res.json("notexist")
     }
     
@@ -92,7 +95,9 @@ app.post("/setscore", (req, res) => {
 
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 300;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
