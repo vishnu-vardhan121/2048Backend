@@ -81,7 +81,7 @@ app.post("/setscore", (req, res) => {
     .updateOne({ email: email }, { $set: { score: score } }, { upsert: true })
     .then((result) => {
       if (result.matchedCount > 0) {
-        res.json({ message: "Score updated successfully", result });
+        res.json({ message: "Score updated successfully ", result });
       } else if (result.upsertedCount > 0) {
         res.json({ message: "New user created and score set", result });
       } else {
