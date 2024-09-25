@@ -5,13 +5,17 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+const PORT = process.env.PORT || 3000;
+const corsOrigin = process.env.CORS_ORIGIN || "http://localhost:3001";
+
 app.use(
   cors({
-    origin: "http://localhost:3001",
+    origin: corsOrigin,
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // If you need to handle cookies
+    credentials: true,
   })
 );
+
 app.options("*", cors()); // Allow preflight for all routes
 
 app.get("/", cors(), (req, res) => {});
@@ -93,7 +97,6 @@ app.post("/setscore", (req, res) => {
     });
 });
 
-const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
